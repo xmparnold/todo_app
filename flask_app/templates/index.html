@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='index.css' ) }}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to the Todo App, {{ session["first_name"] }} {{ session["last_name"] }}! This is now with an MVC architecture</h1>
+    <p>Number of visits: {{ session["num_of_visits"] }}</p>
+    <div>
+        <ul>
+            {% for element in list_todos: %}
+            <li>
+                {{ element.status }} - - {{ element.todo }} - - {{ element.created_at }} - - {{ element.updated_at }} - - {{ element.user_id }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="/todo/new"> Add new todo </a>
+    <a href="/display/user">See my todo's</a>
+
+    <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
